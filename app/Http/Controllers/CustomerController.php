@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Customer;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,14 +12,18 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() {
+    public function index()
+    {
         $customers = Customer::all();
-        return view('customer.index')->with('customers', $customers);
+        return view('customer.index') -> with('customers', $customers);
+
     }
+
     /**
      * Show the form for creating a new resource.
      */
-    public function create(){
+    public function create()
+    {
         return view('customer.create');
     }
 
@@ -29,16 +33,19 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255',
-            'mobile_number' => 'required|max:255',
+            'name' => ['required|max:255'],
+            'phone' => ['required|max:255'],
+            'address' => ['required|max:255']
         ]);
-        // Create The customer
+        // Create customer
         $customer = new Customer();
-        $customer->name = $request->name;
-        $customer->mobile_number = $request->mobile_number;
+        $customer->name = $request->input('name');
+        $customer->phone = $request->input('phone');
+        $customer->address = $request->input('address');
         $customer->save();
-        // Session::flash('customer_create','customer is created.');
-        return redirect()->route('customer.list');
+        // Return to list page with success message
+        Session::flash('success', 'Customer has been added!');
+        return redirect()->route('/customer/create');
     }
 
     /**
@@ -46,8 +53,8 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        $customer = Customer::find($id);
-        return view('customer.show')->with('customer',$customer);
+        $customer = Customer::findOrFail($id);
+        return view('customer.show')->with('customer', $customer);
     }
 
     /**
@@ -55,7 +62,7 @@ class CustomerController extends Controller
      */
     public function edit(string $id)
     {
-        $customer = Customer::find($id);
+        $customer = Customer::findOrFail($id);
         return view('customer.edit')->with('customer', $customer);
     }
 
@@ -65,21 +72,24 @@ class CustomerController extends Controller
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
-			'name' => 'required|max:20|min:3',
-            'mobile_number' => 'required|max:20|min:3',
-		]);
-		if ($validator->fails()) {
-			return redirect('customer/' . $id . '/edit')
+            'name' => ['required|max:255'],
+            'phone' => ['required|max:13'],
+            'address' => ['nullable|max:255']
+        ]);
+        if ($validator->fails()) {
+            return redirect('customer/' . $id . '/edit')
             ->withInput()
             ->withErrors($validator);
-		}
-		// Create The Category
-		$customer = Customer::find($id);
-		$customer->name = $request->Input('name');
-        $customer->mobile_number = $request->Input('mobile_number');
-		$customer->save();
-		// Session::flash('customer_update','customer is updated.');
-        return redirect()->route('customer.list');
+        }
+        // Create The Customer
+        $customer = Customer::find($id);
+        $customer->name = $request->input('name;');
+        $customer->phone = $request->input('phone');
+        $customer->address = $request->input('address');
+        $customer->save();
+        // Return to Customers Page with Success Message
+        Session::flash('success', 'Customer Updated!');
+        return redirect('/customers' . $id . '/edit');
     }
 
     /**
@@ -89,7 +99,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($id);
         $customer->delete();
-        Session::flash('customer_delete','customer is deleted.');
+        Session::flash('customer_delete','Customer is deleted.');
         return redirect('customer');
     }
 }
