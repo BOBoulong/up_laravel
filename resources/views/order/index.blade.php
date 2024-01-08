@@ -12,17 +12,24 @@
     <table  class="table table-bordered">
         <thead>
             <th>ID</th>
-            <th>Name</th>
-            <th>Detail</th>
+            <th>Customer Name</th>
+            <th>Product Name</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
-        {!! json_encode($orders) !!}
+        <!-- {!! json_encode($orders) !!}
+        {!! json_encode($customers) !!} -->
         <tbody>
             @foreach ($orders as $order)
             <tr>
                 <td>
                     {!! $order->id !!}
+                </td>
+                <td>
+                    {!! $customers[$order->customer_id] !!}
+                </td>
+                <td>
+                    {!! $products[$order->product_id] !!}
                 </td>
                 <td><a class="btn btn-primary" href="{!! url('order/' . $order->id . '/edit') !!}">Edit</a></td>
                 <td>

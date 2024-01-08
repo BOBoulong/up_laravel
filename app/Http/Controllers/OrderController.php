@@ -16,9 +16,24 @@ class OrderController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
         $orders = Order::all();
-        return view('order.index')->with('orders',$orders);
+
+        $products = array();
+    	foreach (Product::all() as $product) {
+    		$products[$product->id] = $product->name;
+    	}
+
+        $customers = array();
+        foreach (Customer::all() as $customer) {
+    		$customers[$customer->id] = $customer->name;
+    	}
+        
+        
+        return view('order.index')
+                ->with('orders',$orders)
+                ->with('customers', $customers)
+                ->with('products', $products);
     }
 
     /**
@@ -44,12 +59,12 @@ class OrderController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'product_id' => 'required|integer',
-            'quantity' => 'required|max:20|min:3',
+            'quantity' => 'required|integer',
             'customer_id' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
-            return redirect('product/create')
+            return redirect('order/create')
                 ->withInput()
                 ->withErrors($validator);
         }
@@ -101,7 +116,7 @@ class OrderController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'product_id' => 'required|integer',
-            'quantity' => 'required|max:20|min:3',
+            'quantity' => 'required|integer',
             'customer_id' => 'required|integer',
         ]);
 
@@ -118,7 +133,6 @@ class OrderController extends Controller
         $order->save();
 
         return redirect('order');
-
     }
 
     /**
