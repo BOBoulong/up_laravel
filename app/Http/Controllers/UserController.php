@@ -23,6 +23,20 @@ class UserController extends Controller
         return view('user.create');
     }
 
+    public function validateValidUserPassword(Request $request){
+        // dd($request);
+        // error_log(json_encode($request->email));
+        $user = User::where('email', $request->email)->first();
+        if (is_null($user)) {
+            Session::flash('failed_login','Invalid credentials');
+            return redirect('/')->withInput();
+        } else {
+            if ($user->password == $request->password ) return redirect()->route('category.list');
+            Session::flash('failed_login','Invalid credentials');
+            return redirect('/')->withInput();
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      */

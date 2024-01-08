@@ -13,33 +13,20 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     </head>
-    <main>
-        <form
-            class="d-flex justify-content-center align-items-center flex-column"
-            style="height: 100vh"
-            action="{{ route('form.submit') }}" method="post">
-            @csrf
-            <h1>Login</h1>
-            <div class="mb-3 col-3">
-                <label for="username" class="form-label">username</label>
-                <input type="username" class="form-control" id="username" name="username" placeholder="username">
-                <div>
-                    @error('username')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="mb-3 col-3">
-                <label for="password" class="form-label">password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="password">
-                <div class="">
-                    @error('password')
-                    <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>
-            <button class="btn btn-primary">Submit</button>
-        </form>
+    @if(Session::has('failed_login'))
+        <div class="alert alert-danger alert-dismissible position-fixed top-0" style="top: 0px; right: 0px">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+             {!! session('failed_login') !!}
+        </div>
+    @endif
+    <main class="d-flex justify-content-center align-items-center" style="height: 100vh">
+        {!! Form::open(['url' => '/', 'class' => 'w-25', ]) !!}
+        {!! Form::label('email', 'Email: ') !!}
+        {!! Form::text('email', '',array('class'=>'form-control')) !!}
+        <br>
+        {!! Form::label('password', 'Password: ') !!}
+        {!! Form::password('password',array('class'=>'form-control')) !!}
+        <br class="mt-1">
+        {!! Form::submit('Create',array('class'=> 'btn btn-primary')) !!}
     </main>
 </html>

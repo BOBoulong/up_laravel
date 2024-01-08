@@ -8,6 +8,7 @@
     </div>
     @endif
     @if (count($errors) > 0)
+    <!-- {!! json_encode($errors->all()) !!} -->
     <!-- Form Error List -->
     <div class="alert alert-danger">
         <strong>Something is Wrong</strong>
