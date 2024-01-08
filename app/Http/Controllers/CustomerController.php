@@ -37,8 +37,8 @@ class CustomerController extends Controller
         $customer->name = $request->name;
         $customer->mobile_number = $request->mobile_number;
         $customer->save();
-        Session::flash('customer_create','customer is created.');
-        return redirect('/customer/create');
+        // Session::flash('customer_create','customer is created.');
+        return redirect()->route('customer.list');
     }
 
     /**
@@ -78,8 +78,8 @@ class CustomerController extends Controller
 		$customer->name = $request->Input('name');
         $customer->mobile_number = $request->Input('mobile_number');
 		$customer->save();
-		Session::flash('customer_update','customer is updated.');
-		return redirect('customer/' . $id . '/edit');
+		// Session::flash('customer_update','customer is updated.');
+        return redirect()->route('customer.list');
     }
 
     /**

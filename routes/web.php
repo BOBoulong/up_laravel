@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 Route::get('/testmodel',function(){
     $test = Test::findOrFail(1);
@@ -39,6 +40,7 @@ Route::get('/testuser',function(){
     $user = DB::table('users')->where('id', 1)->first();
     dd($user);
 });
+Route::post('/submit-form', [Controller::class, 'handleForm'])->name('form.submit');
 
 Route::get('/user', [UserController::class, 'store'])->name("user.create");
 
