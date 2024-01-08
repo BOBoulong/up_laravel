@@ -12,9 +12,9 @@
     <table  class="table table-bordered">
         <thead>
             <th>ID</th>
-            <th>Quantity</th>
             <th>Customer Name</th>
             <th>Product Name</th>
+            <th>Quantity</th>
             <th>Total Price</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -27,14 +27,15 @@
                 <td>
                     {!! $order->id !!}
                 </td>
-                <td>
-                    {!! $order->quantity !!}
-                </td>
+
                 <td>
                     {!! $customers[$order->customer_id] !!}
                 </td>
                 <td>
                     {!! $products[$order->product_id]['name'] !!}
+                </td>
+                <td>
+                    {!! $order->quantity !!}
                 </td>
                 <td>
                     {!! $order->quantity * $products[$order->product_id]['price'] !!}
