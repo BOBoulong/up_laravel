@@ -27,6 +27,6 @@
         {!! Form::label('password', 'Password: ') !!}
         {!! Form::password('password',array('class'=>'form-control')) !!}
         <br class="mt-1">
-        {!! Form::submit('Create',array('class'=> 'btn btn-primary')) !!}
+        {!! Form::submit('Login',array('class'=> 'btn btn-primary')) !!}
     </main>
 </html>

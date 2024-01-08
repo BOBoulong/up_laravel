@@ -4,9 +4,9 @@
 <div class="row m-0 justify-content-between">
     <div class="card col-sm-6 col-3" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">Products</h5>
+            <h5 class="card-title">Product</h5>
             <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quidem molestiae ipsum eius eveniet vel reiciendis? Molestias facilis fuga eos?</p>
-            <a href="/product/create" class="btn btn-primary">Create Products</a>
+            <a href="/product/create" class="btn btn-primary">Create Product</a>
         </div>
     </div>
     <div class="card col-sm-6 col-3" style="width: 18rem;">
