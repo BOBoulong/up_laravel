@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -56,6 +57,13 @@ Route::get('/user', [UserController::class, 'store'])->name("user.create");
     Route::get("/customer/{customerId}/edit", [CustomerController::class, 'edit'])->name('customer.edit');
     Route::put("/customer/{customerId}", [CustomerController::class, 'update'])->name('customer.update');
     Route::delete("/customer/{customerId}", [CustomerController::class, 'destroy'])->name('customer.delete');
+
+    Route::get('/order',[OrderController::class,'index'])->name('order.list');
+    Route::get('/order/create', [OrderController::class, 'create'])->name("order.create");
+    Route::post('/order', [OrderController::class, 'store'])->name("order.store");
+    Route::get("/order/{orderId}/edit", [OrderController::class, 'edit'])->name('order.edit');
+    Route::put("/order/{orderId}", [OrderController::class, 'update'])->name('order.update');
+    Route::delete("/order/{orderId}", [OrderController::class, 'destroy'])->name('order.delete');
 
     Route::get('/product',[ProductController::class,'index'])->name('product.index');
     Route::get('/product/create',[ProductController::class,'create'])->name('product.create');
