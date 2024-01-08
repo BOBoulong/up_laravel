@@ -34,14 +34,12 @@ class CustomerController extends Controller
     {
         $request->validate([
             'name' => ['required|max:255'],
-            'phone' => ['required|max:255'],
-            'address' => ['required|max:255']
+            'mobile_number' => ['required|max:255'],
         ]);
         // Create customer
         $customer = new Customer();
         $customer->name = $request->input('name');
-        $customer->phone = $request->input('phone');
-        $customer->address = $request->input('address');
+        $customer->mobile_number = $request->input('mobile_number');
         $customer->save();
         // Return to list page with success message
         Session::flash('success', 'Customer has been added!');
@@ -72,9 +70,8 @@ class CustomerController extends Controller
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => ['required|max:255'],
-            'phone' => ['required|max:13'],
-            'address' => ['nullable|max:255']
+            'name' => 'required|max:255',
+            'mobile_number' => 'required|max:255',
         ]);
         if ($validator->fails()) {
             return redirect('customer/' . $id . '/edit')
@@ -84,8 +81,7 @@ class CustomerController extends Controller
         // Create The Customer
         $customer = Customer::find($id);
         $customer->name = $request->input('name;');
-        $customer->phone = $request->input('phone');
-        $customer->address = $request->input('address');
+        $customer->mobile_number = $request->input('mobile_number');
         $customer->save();
         // Return to Customers Page with Success Message
         Session::flash('success', 'Customer Updated!');
