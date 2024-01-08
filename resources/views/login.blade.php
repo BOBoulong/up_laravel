@@ -19,7 +19,10 @@
              {!! session('failed_login') !!}
         </div>
     @endif
-    <main class="d-flex justify-content-center align-items-center" style="height: 100vh">
+    <main class="d-flex justify-content-center align-items-center flex-column" style="height: 100vh">
+        <div class="logo-container text-center">
+            <img src="/image/puthisastra.jpeg" alt="description of myimage" style="max-width: 100%; height: auto;">
+        </div>
         {!! Form::open(['url' => '/', 'class' => 'w-25', ]) !!}
         {!! Form::label('email', 'Email: ') !!}
         {!! Form::text('email', '',array('class'=>'form-control')) !!}
