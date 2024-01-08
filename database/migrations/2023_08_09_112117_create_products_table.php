@@ -9,13 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-public function up()
+    public function up()
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string("name", 255)->nullable();
             $table->text("description")->nullable();
-            $table->string("image", 255)->nullable();
             $table->decimal("price", 6, 2);
             $table->biginteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');

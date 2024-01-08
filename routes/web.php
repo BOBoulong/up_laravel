@@ -5,8 +5,11 @@ use App\Models\User;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +23,7 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 Route::get('/testmodel',function(){
     $test = Test::findOrFail(1);
@@ -38,17 +41,36 @@ Route::get('/testuser',function(){
     $user = DB::table('users')->where('id', 1)->first();
     dd($user);
 });
+Route::post('/submit-form', [Controller::class, 'handleForm'])->name('form.submit');
 
     Route::get('/category', [CategoryController::class, 'index'])->name("category.list");
     Route::get('/category/create', [CategoryController::class, 'create'])->name("category.create");
     Route::post('/category', [CategoryController::class, 'store'])->name("category.store");
-
     Route::get("/category/{categoryId}/edit", [CategoryController::class, 'edit'])->name('category.edit');
     Route::put("/category/{categoryId}", [CategoryController::class, 'update'])->name('category.update');
-
     Route::delete("/category/{categoryId}", [CategoryController::class, 'destroy'])->name('category.delete');
     Route::get('/category/{cateId}', [CategoryController::class, 'show'])->name("category.show");
 
+    Route::get('/user', [UserController::class, 'index'])->name("user.list");
+    Route::get('/user/create', [UserController::class, 'create'])->name("user.create");
+    Route::post('/user', [UserController::class, 'store'])->name("user.store");
+    Route::get("/user/{userId}/edit", [UserController::class, 'edit'])->name('user.edit');
+    Route::put("/user/{userId}", [UserController::class, 'update'])->name('user.update');
+    Route::delete("/user/{userId}", [UserController::class, 'destroy'])->name('user.delete');
+
+    Route::get('/customer',[CustomerController::class,'index'])->name('customer.list');
+    Route::get('/customer/create', [CustomerController::class, 'create'])->name("customer.create");
+    Route::post('/customer', [CustomerController::class, 'store'])->name("customer.store");
+    Route::get("/customer/{customerId}/edit", [CustomerController::class, 'edit'])->name('customer.edit');
+    Route::put("/customer/{customerId}", [CustomerController::class, 'update'])->name('customer.update');
+    Route::delete("/customer/{customerId}", [CustomerController::class, 'destroy'])->name('customer.delete');
+
+    Route::get('/order',[OrderController::class,'index'])->name('order.list');
+    Route::get('/order/create', [OrderController::class, 'create'])->name("order.create");
+    Route::post('/order', [OrderController::class, 'store'])->name("order.store");
+    Route::get("/order/{orderId}/edit", [OrderController::class, 'edit'])->name('order.edit');
+    Route::put("/order/{orderId}", [OrderController::class, 'update'])->name('order.update');
+    Route::delete("/order/{orderId}", [OrderController::class, 'destroy'])->name('order.delete');
 
     Route::get('/product',[ProductController::class,'index'])->name('product.index');
     Route::get('/product/create',[ProductController::class,'create'])->name('product.create');

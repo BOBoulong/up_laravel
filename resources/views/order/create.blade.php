@@ -9,12 +9,12 @@
         </ol>
         <div class="card mb-4">
             <div class="card-body">
-                @if(Session::has('product_create'))
+                <!-- @if(Session::has('product_create'))
                 <div class="alert alert-primary alert-dismissible">
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     <strong>Primary!</strong> {!! session('product_create') !!}
                 </div>
-                @endif
+                @endif -->
                 @if (count($errors) > 0)
                 <!-- Form Error List -->
                 <div class="alert alert-danger">
@@ -28,23 +28,17 @@
                 </div>
                 @endif
                 <!-- It Create the new Category -->
-                {!! Html::form('POST','/product')->acceptsFiles()->open() !!}
-          {!! Html::label('Category:','category_id') !!}
-                {!! Html::select('category_id',$categories,null)->class('form-control') !!}
+                {!! Html::form('POST','/order')->open() !!}
+                
+                {!! Html::label('Category:','product_id') !!}
+                {!! Html::select('product_id',$products,null)->class('form-control') !!}
 
-                <br>
-                {!! Html::label('Name:','name') !!}
-                {!! Html::input('text','name', '')->class('form-control')  !!}
+                {!! Html::label('Category:','customer_id') !!}
+                {!! Html::select('customer_id',$customers,null)->class('form-control') !!}
 
-                {!! Html::label('Price:','price') !!}
-                {!! Html::input('text','price', '')->class('form-control')  !!}
+                {!! Html::label('quantity:','quantity') !!}
+                {!! Html::input('text','quantity', '')->class('form-control')  !!}
 
-                <!-- {!! Html::label('Image:', 'image') !!}
-                {!! Html::file('image')->class('form-control') !!} -->
-                <br>
-                {!! Html::label('Description:','description') !!}
-                {!! Html::textarea('description', '')->class('form-control') !!}
-                <br>
                 {{ Html::submit('Create')->class('btn btn-primary') }}
 
                 <a class="btn btn-primary" href="{!! url('/product')!!}">Back</a>

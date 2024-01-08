@@ -37,8 +37,8 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->description = $request->description;
         $category->save();
-        Session::flash('category_create','Category is created.');
-        return redirect('/category/create');
+        // Session::flash('category_create','Category is created.');
+        return redirect()->route('category.list');
     }
 
     /**
@@ -78,10 +78,9 @@ class CategoryController extends Controller
 		$category->name = $request->Input('name');
         $category->description = $request->Input('description');
 		$category->save();
-		Session::flash('category_update','Category is updated.');
-		return redirect('category/' . $id . '/edit');
+		// Session::flash('category_update','Category is updated.');
+        return redirect()->route('category.list');
     }
-
 
     /**
      * Remove the specified resource from storage.

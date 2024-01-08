@@ -1,35 +1,39 @@
 @extends('layout.backend')
 @section('content')
-@if(Session::has('customer_delete'))
+@if(Session::has('order_delete'))
     <div class="alert alert-primary alert-dismissible">
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <strong>Primary!</strong> {!! session('customer_delete') !!}
+        <strong>Primary!</strong> {!! session('order_delete') !!}
     </div>
 @endif
-<h1>Customer</h1>
-<h3><a class="btn btn-primary" href= "{{url('customer/create')}}" style="padding-top: 5px">Create New</a></h3>
-@if (count($customers) > 0)
+<h1>Orders</h1>
+<h3><a class="btn btn-primary" href= "{{url('order/create')}}" style="padding-top: 5px">Create New</a></h3>
+@if (count($orders) > 0)
     <table  class="table table-bordered">
         <thead>
             <th>ID</th>
-            <th>Name</th>
-            <th>Phone Number</th>
+            <th>Customer Name</th>
+            <th>Product Name</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
+        <!-- {!! json_encode($orders) !!}
+        {!! json_encode($customers) !!} -->
         <tbody>
-            @foreach ($customers as $customer)
+            @foreach ($orders as $order)
             <tr>
                 <td>
-                    {!! $customer->id !!}
+                    {!! $order->id !!}
                 </td>
                 <td>
-                    {!! $customer->name !!}
+                    {!! $customers[$order->customer_id] !!}
                 </td>
-                <td>{!! $customer->mobile_number !!}</td>
-                <td><a class="btn btn-primary" href="{!! url('customer/' . $customer->id . '/edit') !!}">Edit</a></td>
                 <td>
-                    {!! Form::open(array('url'=>'customer/'. $customer->id, 'method'=>'DELETE')) !!}
+                    {!! $products[$order->product_id] !!}
+                </td>
+                <td><a class="btn btn-primary" href="{!! url('order/' . $order->id . '/edit') !!}">Edit</a></td>
+                <td>
+                    {!! Form::open(array('url'=>'order/'. $order->id, 'method'=>'DELETE')) !!}
                     {!! csrf_field() !!}
                     {!! method_field('DELETE') !!}
                     <button class="btn btn-danger delete">Delete</button>
