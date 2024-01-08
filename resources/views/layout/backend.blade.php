@@ -43,37 +43,29 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/product">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link" href="/category">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Category
                             </a>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <a class="nav-link" href="/product">
                                 <div class="sb-nav-link-icon"><i class="fa-brands fa-product-hunt"></i></i></div>
                                 Product
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/user">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></i></div>
                                 User
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/customer">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-user"></i></div>
                                 Customer
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/order">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                List
-                            </a>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-book"></i></i></div>
-                                Report
-                            </a>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Setting
+                                Order
                             </a>
                         </div>
                     </div>
