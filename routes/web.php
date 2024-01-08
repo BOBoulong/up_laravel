@@ -43,8 +43,6 @@ Route::get('/testuser',function(){
 });
 Route::post('/submit-form', [Controller::class, 'handleForm'])->name('form.submit');
 
-Route::get('/user', [UserController::class, 'store'])->name("user.create");
-
     Route::get('/category', [CategoryController::class, 'index'])->name("category.list");
     Route::get('/category/create', [CategoryController::class, 'create'])->name("category.create");
     Route::post('/category', [CategoryController::class, 'store'])->name("category.store");
@@ -52,6 +50,13 @@ Route::get('/user', [UserController::class, 'store'])->name("user.create");
     Route::put("/category/{categoryId}", [CategoryController::class, 'update'])->name('category.update');
     Route::delete("/category/{categoryId}", [CategoryController::class, 'destroy'])->name('category.delete');
     Route::get('/category/{cateId}', [CategoryController::class, 'show'])->name("category.show");
+
+    Route::get('/user', [UserController::class, 'index'])->name("user.list");
+    Route::get('/user/create', [UserController::class, 'create'])->name("user.create");
+    Route::post('/user', [UserController::class, 'store'])->name("user.store");
+    Route::get("/user/{userId}/edit", [UserController::class, 'edit'])->name('user.edit');
+    Route::put("/user/{userId}", [UserController::class, 'update'])->name('user.update');
+    Route::delete("/user/{userId}", [UserController::class, 'destroy'])->name('user.delete');
 
     Route::get('/customer',[CustomerController::class,'index'])->name('customer.list');
     Route::get('/customer/create', [CustomerController::class, 'create'])->name("customer.create");

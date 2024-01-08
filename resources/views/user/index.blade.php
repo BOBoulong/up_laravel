@@ -8,10 +8,10 @@
                 @endif
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1>All Products</h1>
-                        <h3><a class="btn btn-primary" href= "{{url('product/create')}}" style="padding-top: 5px">Create New</a></h3>
+                        <h1>All Users</h1>
+                        <h3><a class="btn btn-primary" href= "{{url('user/create')}}" style="padding-top: 5px">Create New</a></h3>
                     </div>
-                    @if (count($products) > 0)
+                    @if (count($users) > 0)
 
                     <div class="panel-body">
                         <table class="table table-striped task-table">
@@ -23,26 +23,26 @@
                                 <th>Price</th>
                             </thead>
                             <tbody>
-                                @foreach ($products as $product)
+                                @foreach ($users as $user)
                                 <tr>
-                                    <th><div>{!! $product->id !!}</div></th>
+                                    <th><div>{!! $user->id !!}</div></th>
                                     <td>
-                                        <div>{!! $product->name !!}</div>
+                                        <div>{!! $user->name !!}</div>
                                     </td>
                                     <td>
-                                        <div>{!! $product->description !!}</div>
+                                        <div>{!! $user->description !!}</div>
                                     </td>
                                     <td>
-                                        <div>{{ Html::img('img/'.$product->image, $product->name) }}</div>
+                                        <div>{{ Html::img('img/'.$user->image, $user->name) }}</div>
                                     </td>
                                     <td>
-                                        <div>{!! $product->price !!}</div>
+                                        <div>{!! $user->price !!}</div>
                                     </td>
 
-                                    <td><a class="btn btn-primary" href="{!! url('product/' . $product->id . '/edit') !!}">Edit</a></td>
+                                    <td><a class="btn btn-primary" href="{!! url('user/' . $user->id . '/edit') !!}">Edit</a></td>
 
                                     <td>
-                                        {{ Html::form('DELETE','/product/'. $product->id)->open()}}
+                                        {{ Html::form('DELETE','/user/'. $user->id)->open()}}
                         <button class="btn btn-danger delete">Delete</button>
                         {{ Html::form()->close() }}
                                     </td>
