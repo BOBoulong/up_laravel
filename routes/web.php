@@ -10,6 +10,8 @@ use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -92,3 +94,6 @@ Route::put("/customer/{customerId}", [CustomerController::class, 'update'])->nam
 
 Route::delete("/customer/{customerId}", [CustomerController::class, 'destroy'])->name('customer.delete');
 Route::get('/customer/{customerId}', [CustomerController::class, 'show'])->name("customer.show");
+
+//Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard.index");

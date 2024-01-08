@@ -2,7 +2,7 @@
 @section('content')
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Create Product</h1>
+        <h1 class="mt-4">Create Order</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
             <li class="breadcrumb-item active">Static Navigation</li>
@@ -33,7 +33,7 @@
                 {!! Html::label('Quantity:','quantity') !!}
                 {!! Html::input('text','quantity', '')->class('form-control')  !!}
                 <br>
-                {!! Html::label('Category:','product_id') !!}
+                {!! Html::label('Product:','product_id') !!}
                 {!! Html::select('product_id',$products,null)->class('form-control') !!}
                 <br>
                 {!! Html::label('Customer:','customer_id') !!}

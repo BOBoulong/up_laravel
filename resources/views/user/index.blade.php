@@ -18,9 +18,9 @@
                             <thead>
                                 <th>Id</th>
                                 <th>Name</th>
-                                <th>Description</th>
-                                <th>Image</th>
-                                <th>Price</th>
+                                <th>Email</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
@@ -30,13 +30,7 @@
                                         <div>{!! $user->name !!}</div>
                                     </td>
                                     <td>
-                                        <div>{!! $user->description !!}</div>
-                                    </td>
-                                    <td>
-                                        <div>{{ Html::img('img/'.$user->image, $user->name) }}</div>
-                                    </td>
-                                    <td>
-                                        <div>{!! $user->price !!}</div>
+                                        <div>{!! $user->email !!}</div>
                                     </td>
 
                                     <td><a class="btn btn-primary" href="{!! url('user/' . $user->id . '/edit') !!}">Edit</a></td>

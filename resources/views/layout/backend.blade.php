@@ -43,7 +43,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <a class="nav-link" href="/product">
+                            <a class="nav-link" href="/dashboard">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -75,14 +75,15 @@
                 <main>
                     <div class="container-fluid px-4">
                         <br>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                @yield('content')
-                            </div>
-                        </div>
+                        <!-- <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="/category">Category</a></li>
+                            <li class="breadcrumb-item"><a href="/product">Product</a></li>
+                            <li class="breadcrumb-item"><a href="/user">User</a></li>
+                            <li class="breadcrumb-item"><a href="/customer">Customer</a></li>
+                            <li class="breadcrumb-item"><a href="/order">Order</a></li>
+                        </ol> -->
+                        @yield('content')
                         <div style="height: 100%"></div>
 
                     </div>
