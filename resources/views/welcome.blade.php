@@ -15,6 +15,6 @@
     </style>
 </head>
 <body>
-    <h2>Welcome</h2>
+    @extends('layout.backend')
 </body>
 </html>
