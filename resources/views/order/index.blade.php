@@ -15,6 +15,7 @@
             <th>Quantity</th>
             <th>Customer Name</th>
             <th>Product Name</th>
+            <th>Total Price</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
@@ -33,7 +34,10 @@
                     {!! $customers[$order->customer_id] !!}
                 </td>
                 <td>
-                    {!! $products[$order->product_id] !!}
+                    {!! $products[$order->product_id]['name'] !!}
+                </td>
+                <td>
+                    {!! $order->quantity * $products[$order->product_id]['price'] !!}
                 </td>
                 <td><a class="btn btn-primary" href="{!! url('order/' . $order->id . '/edit') !!}">Edit</a></td>
                 <td>

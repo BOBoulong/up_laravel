@@ -21,7 +21,7 @@ class OrderController extends Controller
 
         $products = array();
     	foreach (Product::all() as $product) {
-    		$products[$product->id] = $product->name;
+    		$products[$product->id] = array('name' => $product->name, 'price' => $product->price);
     	}
 
         $customers = array();
