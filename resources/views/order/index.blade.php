@@ -13,7 +13,7 @@
         <thead>
             <th>ID</th>
             <th>Quantity</th>
-            <th>Product Name</th>
+            <th>Customer Name</th>
             <th>Product Name</th>
             <th>Edit</th>
             <th>Delete</th>
