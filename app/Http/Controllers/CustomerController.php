@@ -85,7 +85,7 @@ class CustomerController extends Controller
         $customer->save();
         // Return to Customers Page with Success Message
         Session::flash('success', 'Customer Updated!');
-        return redirect('/customers' . $id . '/edit');
+        return redirect('customer');
     }
 
     /**
