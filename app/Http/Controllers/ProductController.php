@@ -17,7 +17,12 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('product.index')->with('products',$products);
+
+        $categories = array();
+    	foreach (Category::all() as $category) {
+    		$categories[$category->id] = $category->name;
+    	}
+        return view('product.index')->with('products',$products)->with('categories', $categories);
     }
 
     /**
@@ -106,7 +111,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->save();
 
-        return redirect('product/' . $id . '/edit');
+        return redirect('product');
 
     }
 

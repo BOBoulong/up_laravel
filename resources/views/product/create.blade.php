@@ -35,7 +35,7 @@
                 <br>
                 {!! Html::label('Name:','name') !!}
                 {!! Html::input('text','name', '')->class('form-control')  !!}
-
+                <br>
                 {!! Html::label('Price:','price') !!}
                 {!! Html::input('text','price', '')->class('form-control')  !!}
 

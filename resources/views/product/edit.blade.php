@@ -35,6 +35,6 @@
     {!! Form::textarea('description',null, array('class'=>'form-control')) !!}
     <br>
     {!! Form::submit('Update', array('class'=>'btn btn-primary')) !!}
-    <a class="btn btn-secondary" href="{{route('category.list')}}">Back</a>
+    <a class="btn btn-secondary" href="{{route('product.index')}}">Back</a>
     {!! Form::close() !!}
 @endsection

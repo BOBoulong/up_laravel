@@ -29,19 +29,19 @@
                 @endif
                 <!-- It Create the new Category -->
                 {!! Html::form('POST','/order')->open() !!}
-                
+
+                {!! Html::label('Quantity:','quantity') !!}
+                {!! Html::input('text','quantity', '')->class('form-control')  !!}
+                <br>
                 {!! Html::label('Category:','product_id') !!}
                 {!! Html::select('product_id',$products,null)->class('form-control') !!}
-
-                {!! Html::label('Category:','customer_id') !!}
+                <br>
+                {!! Html::label('Customer:','customer_id') !!}
                 {!! Html::select('customer_id',$customers,null)->class('form-control') !!}
-
-                {!! Html::label('quantity:','quantity') !!}
-                {!! Html::input('text','quantity', '')->class('form-control')  !!}
-
+                <br>
                 {{ Html::submit('Create')->class('btn btn-primary') }}
 
-                <a class="btn btn-primary" href="{!! url('/product')!!}">Back</a>
+                <a class="btn btn-primary" href="{{route('order.list')}}">Back</a>
 
                 {{ Html::form()->close() }}
 

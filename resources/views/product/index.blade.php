@@ -19,8 +19,10 @@
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Description</th>
-                                <th>Image</th>
                                 <th>Price</th>
+                                <th>Category</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </thead>
                             <tbody>
                                 @foreach ($products as $product)
@@ -33,12 +35,11 @@
                                         <div>{!! $product->description !!}</div>
                                     </td>
                                     <td>
-                                        <div>{{ Html::img('img/'.$product->image, $product->name) }}</div>
-                                    </td>
-                                    <td>
                                         <div>{!! $product->price !!}</div>
                                     </td>
-
+                                    <td>
+                                        <div>{!! $categories[$product->category_id] !!}</div>
+                                    </td>
                                     <td><a class="btn btn-primary" href="{!! url('product/' . $product->id . '/edit') !!}">Edit</a></td>
 
                                     <td>

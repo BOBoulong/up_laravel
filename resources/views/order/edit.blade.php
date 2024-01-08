@@ -20,12 +20,12 @@
     </div>
     @endif
     {{ Form::model($order , array('route' => array('order.update', $order->id), 'method'=>'PUT')) }}
-    {!! Form::label('quantity', 'Quantity:') !!}
+    {!! Form::label('Quantity', 'Quantity:') !!}
     {!! Form::text('quantity',null, array('class'=>'form-control')) !!}
     <br>
     {!! Form::label('customer_id', 'Customer:') !!}
     {!! Form::select('customer_id', $customers, $order->customer_id ,array('class'=>'form-control')) !!}
-
+    <br>
     {!! Form::label('product_id', 'Product:') !!}
     {!! Form::select('product_id', $products, $order->product_id ,array('class'=>'form-control')) !!}
     <br>

@@ -12,7 +12,8 @@
     <table  class="table table-bordered">
         <thead>
             <th>ID</th>
-            <th>Customer Name</th>
+            <th>Quantity</th>
+            <th>Product Name</th>
             <th>Product Name</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -24,6 +25,9 @@
             <tr>
                 <td>
                     {!! $order->id !!}
+                </td>
+                <td>
+                    {!! $order->quantity !!}
                 </td>
                 <td>
                     {!! $customers[$order->customer_id] !!}
