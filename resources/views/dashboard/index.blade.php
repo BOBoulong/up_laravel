@@ -49,7 +49,7 @@
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Beverage', 'Snacks', 'Foods', 'Dry Foods', 'Books'],
+      labels: ['Categories', 'Products', 'User', 'Customers', 'Order'],
       datasets: [{
         label: '# of Sales',
         data: [12, 19, 3, 5, 2, 3],
@@ -70,7 +70,7 @@
   const myChart = new Chart(ctx2, {
     type: 'pie', // Change the chart type to 'pie'
     data: {
-        labels: ['Beverage', 'Snacks', 'Foods'],
+        labels: ['Categories', 'Products', 'User'],
         datasets: [{
             label: '# of Sales',
             data: [12, 19, 3],
