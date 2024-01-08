@@ -24,7 +24,7 @@ class Controller extends BaseController
                         ->withErrors($validator)
                         ->withInput();
         }
-        return redirect()->route('category.list');
+        return redirect()->route('dashboard');
     }
 
 }

@@ -31,7 +31,7 @@ class UserController extends Controller
             Session::flash('failed_login','Invalid credentials');
             return redirect('/')->withInput();
         } else {
-            if ($user->password == $request->password ) return redirect()->route('category.list');
+            if ($user->password == $request->password ) return redirect()->route('dashboard.index');
             Session::flash('failed_login','Invalid credentials');
             return redirect('/')->withInput();
         }
