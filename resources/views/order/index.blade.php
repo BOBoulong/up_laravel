@@ -6,7 +6,7 @@
         <strong>Primary!</strong> {!! session('order_delete') !!}
     </div>
 @endif
-<h1>Orders</h1>
+<h1>All Orders</h1>
 <h3><a class="btn btn-primary" href= "{{url('order/create')}}" style="padding-top: 5px">Create New</a></h3>
 @if (count($orders) > 0)
     <table  class="table table-bordered">
