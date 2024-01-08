@@ -33,8 +33,8 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required|max:255'],
-            'mobile_number' => ['required|max:255'],
+            'name' => 'required|max:255',
+            'mobile_number' => 'required|max:255',
         ]);
         // Create customer
         $customer = new Customer();
@@ -43,7 +43,7 @@ class CustomerController extends Controller
         $customer->save();
         // Return to list page with success message
         Session::flash('success', 'Customer has been added!');
-        return redirect()->route('/customer/create');
+        return redirect()->route('customer.list');
     }
 
     /**
