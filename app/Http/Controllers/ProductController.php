@@ -37,7 +37,6 @@ class ProductController extends Controller
             'name' => 'required|max:20|min:3',
             'category_id' => 'required|integer',
             'price' => 'required|max:20|min:3',
-            'image' => 'required|mimes:jpg,jpeg,png,gif',
             'description' => 'required|max:1000|min:10',
         ]);
 
@@ -48,20 +47,14 @@ class ProductController extends Controller
         }
 
         // Create The product
-        $image = $request->file('image');
-        $upload = 'image';
-        $filename = time().$image->getClientOriginalName();
-        move_uploaded_file($image->getPathName(), $upload. $filename);
-
         $product = new Product();
         $product->name = $request->name;
         $product->category_id = $request->category_id;
         $product->price = $request->price;
-        $product->image = $filename;
         $product->description = $request->description;
         $product->save();
         Session::flash('product_create','New data is created.');
-        return redirect('product/create');
+        return redirect('product');
     }
 
     /**
@@ -77,7 +70,15 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = array();
+    	foreach (Category::all() as $category) {
+    		$categories[$category->id] = $category->name;
+    	}
+
+        $product = Product::find($id);
+        return view('product.edit')
+                    ->with('categories', $categories)
+                    ->with('product', $product);
     }
 
     /**
@@ -85,7 +86,28 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:20|min:3',
+            'category_id' => 'required|integer',
+            'price' => 'required|max:20|min:3',
+            'description' => 'required|max:1000|min:10',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('product/'. $id . '/edit')
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->category_id = $request->category_id;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->save();
+
+        return redirect('product/' . $id . '/edit');
+
     }
 
     /**
@@ -93,6 +115,9 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        Session::flash('product_delete','Product is deleted.');
+        return redirect('product');
     }
 }

@@ -82,7 +82,6 @@ class CategoryController extends Controller
 		return redirect('category/' . $id . '/edit');
     }
 
-
     /**
      * Remove the specified resource from storage.
      */

@@ -4,6 +4,7 @@ use App\Models\Test;
 use App\Models\User;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -38,10 +39,11 @@ Route::get('/testuser',function(){
     dd($user);
 });
 
+Route::get('/user', [UserController::class, 'store'])->name("user.create");
+
     Route::get('/category', [CategoryController::class, 'index'])->name("category.list");
     Route::get('/category/create', [CategoryController::class, 'create'])->name("category.create");
     Route::post('/category', [CategoryController::class, 'store'])->name("category.store");
-
     Route::get("/category/{categoryId}/edit", [CategoryController::class, 'edit'])->name('category.edit');
     Route::put("/category/{categoryId}", [CategoryController::class, 'update'])->name('category.update');
 

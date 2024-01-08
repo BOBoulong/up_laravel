@@ -6,9 +6,9 @@
         <strong>Primary!</strong> {!! session('category_delete') !!}
     </div>
 @endif
-@if (count($categories) > 0)
 <h1>Category</h1>
 <h3><a class="btn btn-primary" href= "{{url('category/create')}}" style="padding-top: 5px">Create New</a></h3>
+@if (count($categories) > 0)
     <table  class="table table-bordered">
         <thead>
             <th>ID</th>
