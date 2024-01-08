@@ -16,7 +16,7 @@
     <body>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">UP Shop</a>
+            <a class="navbar-brand ps-3" href="/dashboard">UP Shop</a>
             <!-- Sidebar Toggle-->
             <div style="width: 90%"> </div>
             <!-- Navbar-->
