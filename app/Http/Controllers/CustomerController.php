@@ -80,7 +80,7 @@ class CustomerController extends Controller
         }
         // Create The Customer
         $customer = Customer::find($id);
-        $customer->name = $request->input('name;');
+        $customer->name = $request->input('name');
         $customer->mobile_number = $request->input('mobile_number');
         $customer->save();
         // Return to Customers Page with Success Message
