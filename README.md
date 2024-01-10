@@ -8,12 +8,12 @@
 Our project is a Backoffice application for staff to order items for customers.
 
 ## Project requirements
-php 8\n
+php 8<br>
 mysql or any relational database 
 
 ## How to run the project
-update env to your database connection please refer to ( .env.examples )\n
-composer install\n
-php artisan migrate\n
-php artisan serve\n
+update env to your database connection please refer to ( .env.examples )<br>
+composer install<br>
+php artisan migrate<br>
+php artisan serve<br>
 
